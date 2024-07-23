@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Berkeley Humanoid: A Research Platform for Learning-based Control">
+  <meta name="keywords" content="Humanoid, Hardware Design, Reinforcement Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Berkeley Humanoid: A Research Platform for Learning-based Control</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+  <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/a_opening.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-video is-hidden-tablet is-inline-block-mobile"
+    style="height: 154.28571428vw; width: 100%; min-width:64.81481481vh;min-height:100%;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/a_opening_mobile.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="overlay"></div>
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item pl-4 pr-4" href="./static/todo.pdf">
+              <span class="icon" style="margin-right:5px;">
+                <i class="fas fa-file-pdf"></i>
+              </span>
+              <span>Paper Todo</span>
+            </a>
+            <a class="navbar-item  pl-4 pr-4" href="https://arxiv.org/abs/todo">
+              <span class="icon" style="margin-right:5px;">
+                <i class="ai ai-arxiv"></i>
+              </span>
+              <span>arXiv Todo</span> </a>
+            <a href="https://youtu.be/todo" class="navbar-item  pl-4 pr-4">
+              <span class="icon" style="margin-right:5px;">
+                <i class="fab fa-youtube"></i>
+              </span>
+              <span>Video Todo</span> </a>
+            <span class="navbar-item  pl-4 pr-4">
+              <a href="https://github.com/xx/xx" class="button is-inverted is-large">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code Todo</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 9rem;">
+        Berkeley Humanoid
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 3.5rem;">
+        A Research Platform for Learning-based Control</h1>
+      <p style="font-size: 1.5rem;">
+        <a href="https://github.com/qiayuanl">Qiayuan Liao</a>, 
+        <a href="">Bike Zhang</a>, 
+        <a href="">Xuanyu Huang</a>, 
+        <a href="">Xiaoyu Huang</a>, 
+        <a href="https://zyliatzju.github.io/">Zhongyu Li</a>, 
+        <a href="https://hybrid-robotics.berkeley.edu/koushil/">Koushil Sreenath</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <!-- <div class="hero-foot is-hidden-mobile">
+    <nav class="tabs is-boxed is-fullwidth is-size-5">
+      <ul>
+        <li><a href="#todo">Design (todo)</a></li>
+        <li><a href="#todo">Walking (todo)</a></li>
+        <li><a href="#todo">Hopping (todo)</a></li>
+        <li><a href="#todo">Various Terrains (todo)</a></li>
+        <li><a href="#todo">Slope (todo)</a></li>
+        <li><a href="#todo">Stairs (todo)</a></li>
+        <li><a href="#todo">Long Distance (todo)</a></li>
+        <li><a href="#todo">Hardware Reliability (todo)</a></li>
+      </ul>
+    </nav>
+  </div> -->
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p class="abstract-text">
+            We introduce <strong>Berkeley Humanoid</strong>, a reliable and low-cost middle-sized humanoid research platform for learning-based control. 
+            Our lightweight, in-house-built robot is designed specifically for learning algorithms with low simulation complexity, 
+            anthropomorphic motion, and high reliability against falls. Thanks to the narrow sim-to-real gap, our robot enables robust 
+            outdoor experiments over various terrains with a reinforcement learning controller using light domain randomization. Capable 
+            of omnidirectional locomotion and withstanding large perturbations with a compact setup, our system aims for scalable, 
+            real-world deployment of learning-based humanoid systems.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2">Video (Todo)</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/p71Z71kFVLE?si=FqFZnDkv0X7sewi7&amp;start=1"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .abstract-text { font-size: 1.5rem; }
+  @media (max-width: 767px) { .abstract-text { font-size: 0.9rem; } }
+</style>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Design</h2>
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/design_robot.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/design_actuator.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Dynamic Walking</h2>
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/walk_straight.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/walk_sideward.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Dynamic Hopping</h2>
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/hopping_double.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/hopping_single.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Various Terrains</h2>
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item item-steve">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/uneven.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/grass.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+      <div class="item item-steve">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/road.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/grass_withered.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+      <div class="item item-blueshirt">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/red_brick.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/stone_brick.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+      <div class="item item-coffee">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/rubber_track.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/bridge_long.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+      <div class="item item-toby">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/bridge_short.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/indoor.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Recovery</h2>
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/recovery.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/recovery2.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Slope</h2>
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item item-steve">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/uphill_backward_2.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/downhill_backward_1.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+      <div class="item item-steve">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/uphill_forward.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/downhill_forward.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+      <div class="item item-blueshirt">
+        <div class="column is-full-width is-centered has-text-centered">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/uphill_backward_1.mp4"
+          style="border-radius: 10px; margin-bottom: 15px; "></video>
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/downhill_backward_2.mp4"
+          style="border-radius: 10px;"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Stairs</h2>
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item item-steve">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/stairs_quick.mp4"></video>
+      </div>
+      <div class="item item-steve">
+        <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/stairs_sideward.mp4"></video>
+      </div>
+      <div class="item item-blueshirt">
+        <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/stairs_turn.mp4"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Long Distance Walking</h2>
+    <div class="columns is-centered has-text-centered">
+        <div class="content has-text-justified">
+          <p style="font-size: 1.5rem; text-align: center;">
+            4x speed. Hovering over the video will play it at 1x speed. Todo: replace video links.
+          </p>
+        </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <iframe width="100%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/p71Z71kFVLE?si=FqFZnDkv0X7sewi7&amp;start=1"
+          title="Long Distance Walking 1" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <iframe width="100%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/p71Z71kFVLE?si=FqFZnDkv0X7sewi7&amp;start=1"
+          title="Long Distance Walking 2" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const longWalking1 = document.getElementById('longWalking1');
+  longWalking1.addEventListener('mouseenter', function() {
+    this.playbackRate = 1.0;
+  });
+  longWalking1.addEventListener('mouseleave', function() {
+    this.playbackRate = 4.0;
+  });
+  const longWalking2 = document.getElementById('longWalking2');
+  longWalking2.addEventListener('mouseenter', function() {
+    this.playbackRate = 1.0;
+  });
+  longWalking2.addEventListener('mouseleave', function() {
+    this.playbackRate = 4.0;
+  });
+</script>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Training in Isaac Lab</h2>
+    <div class="columns is-centered">
+      <div class="column is-three-fifths is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/training.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Hardware Reliability</h2>
+    <p style="font-size: 1.5rem; text-align: center;">
+      Functional after each of these falls.
+    </p>
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/fall_1.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/fall_2.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/fall_old_1.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video autoplay loop muted playsinline src="./static/videos/fall_old_2.mp4" poster="./static/videos/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Failure</h2>
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item item-steve">
+          <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/failure_1.mp4"></video>
+      </div>
+      <div class="item item-steve">
+        <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/failure_2.mp4"></video>
+      </div>
+      <div class="item item-blueshirt">
+        <video poster="./static/videos/loading-icon.gif" autoplay muted loop playsinline height="100%" src="./static/videos/failure_3.mp4"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2">Acknowledgement</h2>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.5rem;">
+            This work was supported in part by The AI Institute and NSF Grant CMMI 1944722.
+            We would like to thank Jiaze Cai for the generous help with the experiments, and Yufeng Chi for suggesting the name of the robot.
+            We also thank Prof. Wei Zhang and Pan Motor for their help with the actuators and discussions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code> Todo </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>Page template borrowed from <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a>.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
